@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/static/css/main.8fe2e00b.css",
-    "main.js": "/static/js/main.21025b41.js",
-    "static/media/icon-dollar.svg": "/static/media/icon-dollar.9f9be3534a9295a65957.svg",
-    "static/media/icon-person.svg": "/static/media/icon-person.65bfd20465dd1d2cb58c.svg",
-    "index.html": "/index.html",
-    "main.8fe2e00b.css.map": "/static/css/main.8fe2e00b.css.map",
-    "main.21025b41.js.map": "/static/js/main.21025b41.js.map"
+    "main.css": "/Tip-Calculator-React/static/css/main.293851cc.css",
+    "main.js": "/Tip-Calculator-React/static/js/main.21025b41.js",
+    "static/media/icon-dollar.svg": "/Tip-Calculator-React/static/media/icon-dollar.9f9be3534a9295a65957.svg",
+    "static/media/icon-person.svg": "/Tip-Calculator-React/static/media/icon-person.65bfd20465dd1d2cb58c.svg",
+    "index.html": "/Tip-Calculator-React/index.html",
+    "main.293851cc.css.map": "/Tip-Calculator-React/static/css/main.293851cc.css.map",
+    "main.21025b41.js.map": "/Tip-Calculator-React/static/js/main.21025b41.js.map"
   },
   "entrypoints": [
-    "static/css/main.8fe2e00b.css",
+    "static/css/main.293851cc.css",
     "static/js/main.21025b41.js"
   ]
 }
