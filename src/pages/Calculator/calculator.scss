@@ -1,0 +1,436 @@
+.calculator {
+  width: 100vw;
+  height: 100vh;
+  background: #c5e4e7;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  overflow: hidden;
+
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    /* display: none; <- Crashes Chrome on hover */
+    -webkit-appearance: none;
+    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+  }
+
+  input[type="number"] {
+    -moz-appearance: textfield; /* Firefox */
+  }
+
+  .logo {
+    margin-bottom: 5rem;
+  }
+
+  .tip-box {
+    width: 920px;
+    height: 481px;
+    background: #ffffff;
+    box-shadow: 0px 32px 43px rgba(79, 166, 175, 0.200735);
+    border-radius: 25px;
+
+    margin-bottom: 5rem;
+
+    display: flex;
+
+    .left {
+      width: 50%;
+      height: 100%;
+
+      margin-left: 3rem;
+      margin-top: 3rem;
+
+      .wrapper {
+        width: calc(100% - 3rem);
+        height: calc(100% - 6rem);
+
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        .amount-input {
+          &.active {
+            .error {
+              border: 2px solid #e17052;
+            }
+          }
+
+          .labels {
+            width: 96%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            .amount-label {
+              font-family: "Space Mono";
+              font-style: normal;
+              font-weight: 700;
+              font-size: 16px;
+              line-height: 24px;
+
+              color: #5e7a7d;
+
+              padding-bottom: 5px;
+            }
+          }
+
+          input {
+            width: 350px;
+            height: 48px;
+
+            border-radius: 5px;
+
+            border: none;
+            outline: none;
+
+            font-family: "Space Mono";
+            font-style: normal;
+            font-weight: 700;
+            font-size: 24px;
+            line-height: 36px;
+            /* identical to box height */
+
+            text-align: right;
+
+            color: #00474b;
+
+            padding-right: 20px;
+
+            cursor: pointer;
+            &:focus {
+              border: 2px solid #26c2ae;
+            }
+
+            &.money {
+              background: url("../../../public/icon-dollar.svg") no-repeat
+                  scroll 7px 7px,
+                #f3f9fa;
+              background-position: 20px 50%;
+            }
+
+            &.people {
+              background: url("../../../public/icon-person.svg") no-repeat
+                  scroll 7px 7px,
+                #f3f9fa;
+              background-position: 20px 50%;
+            }
+          }
+        }
+
+        .select-tip {
+          .labels {
+            width: 95%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            .select-tip-label {
+              font-family: "Space Mono";
+              font-style: normal;
+              font-weight: 700;
+              font-size: 16px;
+              line-height: 24px;
+              color: #5e7a7d;
+            }
+          }
+
+          .tips {
+            display: flex;
+            flex-wrap: wrap;
+
+            .tip {
+              background: #00474b;
+              border-radius: 5px;
+              width: 117px;
+              height: 48px;
+
+              margin-top: 10px;
+              margin-right: 10px;
+
+              font-family: "Space Mono";
+              font-style: normal;
+              font-weight: 700;
+              font-size: 24px;
+              line-height: 36px;
+              /* identical to box height */
+
+              text-align: center;
+
+              color: #ffffff;
+
+              display: flex;
+              align-items: center;
+              justify-content: center;
+
+              cursor: pointer;
+              &:hover {
+                background: #9fe8df;
+              }
+
+              &.active {
+                background: #26c2ae;
+              }
+
+              &.custom {
+                width: 107px;
+                padding-right: 10px;
+                text-align: right;
+                color: #547878;
+                background: #f3f9fa;
+                border: none;
+                outline: none;
+                color: #00474b;
+
+                &:focus {
+                  border: 2px solid #26c2ae;
+                }
+
+                &::placeholder {
+                  padding-left: 10px;
+                  text-align: center;
+                }
+              }
+            }
+          }
+        }
+
+        .amount-input,
+        .select-tip {
+          .labels {
+            .error-label {
+              display: none;
+            }
+          }
+
+          &.active {
+            .labels {
+              .error-label {
+                &.active {
+                  display: block;
+                  font-family: "Space Mono";
+                  font-style: normal;
+                  font-weight: 700;
+                  font-size: 16px;
+                  line-height: 24px;
+
+                  text-align: right;
+
+                  color: #e17457;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .right {
+      width: 50%;
+      height: 100%;
+
+      margin-top: 2rem;
+
+      .wrapper {
+        width: calc(100% - 3rem);
+        height: calc(100% - 4rem);
+        background: #00474b;
+        border-radius: 15px;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+
+        .calculated-data {
+          width: 86%;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+
+          .tip-amount,
+          .total-amount {
+            width: 100%;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            .titles {
+              .main-title {
+                font-family: "Space Mono";
+                font-style: normal;
+                font-weight: 700;
+                font-size: 16px;
+                line-height: 24px;
+                color: #ffffff;
+              }
+              .sub-title {
+                font-family: "Space Mono";
+                font-style: normal;
+                font-weight: 700;
+                font-size: 13px;
+                line-height: 19px;
+
+                color: #7f9d9f;
+              }
+            }
+
+            .amount {
+              font-family: "Space Mono";
+              font-style: normal;
+              font-weight: 700;
+              font-size: 48px;
+              line-height: 71px;
+
+              text-align: right;
+              letter-spacing: -1px;
+
+              color: #26c2ae;
+            }
+          }
+        }
+        .reset {
+          width: 333px;
+          height: 48px;
+
+          background: #0d686d;
+          border-radius: 5px;
+          border: none;
+          outline: none;
+
+          font-family: "Space Mono";
+          font-style: normal;
+          font-weight: 700;
+          font-size: 20px;
+          line-height: 30px;
+
+          text-align: center;
+
+          color: #00474b;
+
+          &.active {
+            background: #26c2ae;
+            cursor: pointer;
+            &:hover {
+              background: #9fe8df;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 375px) {
+  .calculator {
+    display: flex;
+    flex-direction: column;
+    align-items: unset;
+    justify-content: unset;
+    .logo {
+      width: 100%;
+      height: 15%;
+      margin-bottom: 0;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .tip-box {
+      width: 100%;
+      height: 85%;
+      border-radius: unset;
+      border-top-left-radius: 25px;
+      border-top-right-radius: 25px;
+
+      margin: unset;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+
+      .left {
+        width: 100%;
+        margin: 0;
+        height: 60%;
+
+        margin-top: 30px;
+
+        .wrapper {
+          width: 100%;
+          height: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: space-around;
+          margin: 0;
+
+          .amount-input {
+            .labels {
+              width: 315.5px;
+            }
+            input {
+              width: 291px;
+              height: 48px;
+            }
+          }
+
+          .select-tip {
+            width: 311px;
+
+            .labels {
+              width: 311px;
+            }
+
+            .tips {
+              width: 324px;
+
+              .tip {
+                width: 149px;
+                height: 48px;
+
+                &.custom {
+                  width: 139px;
+                }
+              }
+            }
+          }
+        }
+      }
+
+      .right {
+        margin: 0;
+        width: 100%;
+        height: 40%;
+        margin-top: 30px;
+
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+
+        .wrapper {
+          width: 327px;
+          height: 257px;
+
+          .calculated-data {
+            .tip-amount,
+            .total-amount {
+              margin-bottom: 10px;
+              margin-top: 10px;
+              .amount {
+                font-size: 32px;
+                line-height: 47px;
+              }
+            }
+          }
+          .reset {
+            width: 281px;
+            height: 48px;
+          }
+        }
+      }
+    }
+  }
+}
