@@ -1,7 +1,7 @@
 {
   "name": "tip-calculator",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
@@ -20,6 +20,7 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
   },
+  "homepage": "https://anridarts.github.io/Tip-Calculator-React/",
   "eslintConfig": {
     "extends": [
       "react-app",
